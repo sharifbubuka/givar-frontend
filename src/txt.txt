@@ -1,0 +1,9 @@
+regex pattern to verify ugandan phone numbers
+
+image contributors
+happy_boy                   Photo by Kenex Media sa from Pexels
+community support           Photo by Agung Pandit Wiguna from Pexels
+                              twitter: https://twitter.com/Panditwiguna
+charity support             Photo by Denis Ngai from Pexels
+                              twitter: https://twitter.com/DenisNgai
+education                   From savethechildren.org's website
