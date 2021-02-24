@@ -195,13 +195,13 @@ function ProjectPage(props) {
   // }, [])
 
   useEffect(() => {
-    axios(`http://127.0.0.1:4000/fundraisers/${id}`)
+    axios(`/fundraisers/${id}`)
       .then(response => {
         const fundraiser = response.data
         setFundraiser(fundraiser)
         document.title = `Fundraiser: ${fundraiser.name}`
         console.log('Fundraiser is:', fundraiser)
-        axios.get(`http://127.0.0.1:4000/users/${fundraiser.ownerId}`)
+        axios.get(`/users/${fundraiser.ownerId}`)
           .then(response => {
             const owner = response.data
             setFundraiserOwner(owner)
@@ -295,7 +295,7 @@ function ProjectPage(props) {
                   <FiShare2 className={classes.shareButtonIcon} size={25} />
                   Share
               </button>
-              <Link to={{pathname: `/project/donate/${id}`, state: fundraiser}} className={classes.donateLink}>
+              <Link to={{pathname: `/fundraiser/donate/${id}`, state: fundraiser}} className={classes.donateLink}>
                 <button className={classes.shareButtonBottom}>
                   <BiDonateHeart className={classes.shareButtonIcon} size={25} />
                   Donate

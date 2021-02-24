@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
 import { Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import FormField from '../../../components/FormField'
 import validate from '../../../utils/validation'
+import {connect} from 'react-redux'
+import {saveEmailSubscriber} from '../../../redux/emailSubscription/emailSubActions'
 
 const useStyles = makeStyles(theme => ({
   newsletterForm: {
@@ -39,12 +41,19 @@ const initialValues = {
   email: ''
 }
 
-const handleFormSubmit = (values) => {
-  console.log(values)
-}
-
-function FooterForm() {
+function FooterForm({emailSubscriber, saveEmailSubscriber}) {
   const classes = useStyles()
+
+  useEffect(() => {
+    return
+  }, [emailSubscriber])
+
+  const handleFormSubmit = (values, {resetForm}) => {
+    console.log(values)
+    saveEmailSubscriber(values)
+    if (emailSubscriber.saveSubscriberSuccess)
+      resetForm()
+  }
   
   const formik = useFormik({
     initialValues: initialValues,
@@ -78,6 +87,9 @@ function FooterForm() {
           helperText={formik.touched.email && formik.errors.email}
         />
 
+        {/* {emailSubscriber.emailAlreadyExists ? (<p>{`${formik.vaulues.email} already exists.`}</p>) : null}
+        {emailSubscriber.internalServerError || emailSubscriber.saveSubscriberFailure ? (<p>Registration Failed</p>): null} */}
+
         <FormField
           type='submit'
           name='submit'
@@ -88,4 +100,16 @@ function FooterForm() {
   )
 }
 
-export default FooterForm
+const mapStateToProps = state => {
+  return {
+    emailSubscriber: state.emailSubscriber
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    saveEmailSubscriber: (emailSubscriber) => dispatch(saveEmailSubscriber(emailSubscriber))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FooterForm)

@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(0),
     flex: 1,
     display: 'flex',
-    backgroundColor: 'magenta'
+    backgroundColor: 'white'
   },
   innerWrapper: {
     display: 'flex',
@@ -62,12 +62,12 @@ function DonatePage(props) {
   const [fundraiserOwner, setFundraiserOwner] = useState(null)
 
   useEffect(() => {
-    axios(`http://127.0.0.1:4000/fundraisers/${id}` )
+    axios(`/fundraisers/${id}` )
     .then(response => {
       const fundraiser = response.data
       setFundraiser(fundraiser)
       document.title = `Donate | ${fundraiser.name}`
-      axios(`http://127.0.0.1:4000/users/${fundraiser.ownerId}`)
+      axios(`/users/${fundraiser.ownerId}`)
         .then(response => {
           const owner = response.data 
           setFundraiserOwner(owner)

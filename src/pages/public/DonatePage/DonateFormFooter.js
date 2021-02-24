@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const useStyles = makeStyles(theme => ({
   terms: {
     backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.dark,
+    color: 'white',
     textAlign: 'center',
     paddingTop: theme.spacing(0.5),
     paddingBottom: theme.spacing(1),
@@ -20,7 +20,7 @@ function DonateFormFooter() {
     <div className={classes.terms}>
       The beneficiaries will receive your donation directly. <br />
       Donations are processed by the MTN Momo api. <br />
-      Learn more from our <Link to='/djfdk'>Terms of Service</Link>.
+      Learn more from our <Link to='/djfdk'><span style={{color: 'white', textDecoration: 'none'}}>Terms of Service</span></Link>.
     </div>
   )
 }

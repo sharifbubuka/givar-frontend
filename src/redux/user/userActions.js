@@ -34,7 +34,7 @@ export const fetchUser = ({email, password}) => {
   return dispatch => {
     axios({
       method: 'post',
-      url: 'http://127.0.0.1:4000/users/login',
+      url: '/users/login',
       data: {
         email: email,
         password: password

@@ -22,7 +22,7 @@ export const registerUser = user => {
   return dispatch => {
     axios({
       method: 'post',
-      url: 'http://127.0.0.1:4000/users/',
+      url: '/users/',
       data: user
     })
     .then(response => {

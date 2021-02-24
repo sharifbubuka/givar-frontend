@@ -5,6 +5,7 @@ import RouterLink from '../../../components/RouteLink'
 import { BiLogIn } from 'react-icons/bi'
 import {connect} from 'react-redux'
 import LogoutUser from '../../../containers/LogoutUser'
+import Button from '../../../components/Button'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -65,7 +66,7 @@ function ProjectPageHeader({user}) {
           </>) : 
           (<>
           <LogoutUser className={classes.logout}>
-            Logout
+            <Button style={{padding: '1px 10px'}}>Logout</Button>
           </LogoutUser>
           </>)}
         </div>

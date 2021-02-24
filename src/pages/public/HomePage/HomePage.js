@@ -72,7 +72,7 @@ function Home() {
   const { latitude, longitude, positionError } = usePosition()
   
   useEffect(() => {
-    axios.get('http://127.0.0.1:4000/fundraisers')
+    axios.get('/fundraisers')
       .then(response => {
         const projects = response.data
         console.log(projects)
@@ -100,7 +100,6 @@ function Home() {
           </div>
           </Container>
         </section>
-        {/* <Fundraisers projects={projects} /> */}
         {projects ? (<Fundraisers projects={projects} />) : (<h2>Loading...</h2>)}
       </main>
       <PrimaryFooter />
